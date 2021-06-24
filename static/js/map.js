@@ -1,6 +1,5 @@
 map = "";
 polyline = "";
-info = document.getElementById('info')
 window.onload = () => {
     loadmap();
     getPos();
@@ -26,11 +25,9 @@ async function getPos(){
             if(data[i].lat !=0 && data[i].long!=0){
               latlngs.push(new L.LatLng(data[i].lat, data[i].long));
             }
-            let date = new Date(data[data.length-1].date*1000)
-            info.innerText = `Last update : ${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-            polyline = L.polyline(latlngs, {color: 'red'});
-            map.addLayer(polyline);
           }
 
+          polyline = L.polyline(latlngs, {color: 'red'});
+          map.addLayer(polyline);
         }
 }
