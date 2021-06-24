@@ -21,5 +21,6 @@ db.create_all()
 def get():
     return flask.send_from_directory("static", "map.html")
 
+
 import resources
 api.add_resource(resources.Gps, '/gps')
