@@ -1,6 +1,7 @@
 map = "";
 polyline = "";
-info = document.getElementById('info')
+info = document.getElementById('info');
+last = {};
 window.onload = () => {
     loadmap();
     getPos();
@@ -25,12 +26,15 @@ async function getPos(){
           for(let i= 0; i < data.length; i++){
             if(data[i].lat !=0 && data[i].long!=0){
               latlngs.push(new L.LatLng(data[i].lat, data[i].long));
+              last[data[i].name] = data[i].date;
             }
-            let date = new Date(data[data.length-1].date*1000)
-            info.innerText = `Last update : ${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-            polyline = L.polyline(latlngs, {color: 'red'});
-            map.addLayer(polyline);
           }
-
+          info.innerHTML = "";
+          for (const [key, value] of Object.entries(last)) {
+            let date = new Date(value*1000)
+                info.innerHTML += `<p>Last update <b>${key}</b> : ${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}</p>`
+          }
+          polyline = L.polyline(latlngs, {color: 'red'});
+          map.addLayer(polyline);
         }
 }

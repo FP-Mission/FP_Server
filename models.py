@@ -7,6 +7,7 @@ class GpsModel(db.Model):
     date = db.Column(db.Integer, unique=True, nullable=False)
     lat = db.Column(db.Float,nullable=False)
     long = db.Column(db.Float, nullable=False)
+    name = db.Column(db.String(30), nullable=False)
 
     def to_json(self):
-        return {"date":self.date, "lat" : self.lat, "long": self.long}
+        return {"date":self.date, "lat" : self.lat, "long": self.long, "name":self.name}

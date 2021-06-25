@@ -9,6 +9,7 @@ class Gps(Resource):
         self.parser_post.add_argument("date", required=True)
         self.parser_post.add_argument("lat", required=True)
         self.parser_post.add_argument("long", required=True)
+        self.parser_post.add_argument("name", required=True)
 
         self.parser_get = reqparse.RequestParser()
         self.parser_get.add_argument("dump", type=int)
@@ -26,7 +27,6 @@ class Gps(Resource):
 
     def post(self):
         data = self.parser_post.parse_args()
-        print(data["lat"])
-        gps = GpsModel(date=data['date'], lat=data['lat'], long=data['long'])
+        gps = GpsModel(date=data['date'], lat=data['lat'], long=data['long'],name=data['name'])
         db.session.add(gps)
         db.session.commit()
