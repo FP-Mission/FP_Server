@@ -1,5 +1,4 @@
 from app import db
-from datetime import datetime
 
 class GpsModel(db.Model):
     __tablename__ = 'gps'
