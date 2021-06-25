@@ -11,3 +11,13 @@ class GpsModel(db.Model):
 
     def to_json(self):
         return {"date":self.date, "lat" : self.lat, "long": self.long, "name":self.name}
+
+class PictureModel(db.Model):
+    __tablename__ = 'picture'
+
+    id = db.Column(db.Integer, primary_key=True)
+    picturI_id = db.Column(db.Integer, unique=True, nullable=False)
+    date = db.Column(db.Integer, unique=True, nullable=False)
+
+    def to_json(self):
+        return {"id":self.picturI_id, "date" : self.date}

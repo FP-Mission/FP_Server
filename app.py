@@ -19,8 +19,9 @@ db.create_all()
 
 @app.route('/')
 def get():
-    return flask.send_from_directory("static", "map.html")
+    return flask.send_from_directory("static", "index.html")
 
 
 import resources
 api.add_resource(resources.Gps, '/gps')
+api.add_resource(resources.Picture, '/image')

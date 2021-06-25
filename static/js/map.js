@@ -2,11 +2,6 @@ map = "";
 polyline = "";
 info = document.getElementById('info');
 last = {};
-window.onload = () => {
-    loadmap();
-    getPos();
-    setInterval(getPos,10000);
-}
 
 loadmap = () => {
          map = L.map('map').setView([47.0024, 7.0126], 10);
