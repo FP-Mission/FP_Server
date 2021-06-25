@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from app import db
-
+from models import GpsModel
 
 
 class Gps(Resource):
